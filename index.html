@@ -1,25 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Web based video cutter</title>
 	<link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
-	<div id="main">
-		<video width="640" height="480" id="main-video">
-			<source src="sample.mp4" type="video/mp4" />
-		</video>
+	<div id="player">
+		<div id="video">
+			<video width="640" height="480" id="main-video">
+				<source src="sample.mp4" type="video/mp4" />
+			</video>
+		</div>
+		<div id="toolbar">
+			<div id="play-pause"></div>
+			<div id="progress-bar"></div>
+			<div id="cut-point-list"></div>
+			<div id="progress-point"></div>
+			<div id="add-point"></div>
+		</div>
+		<div id="export"></div>
 	</div>
 
-	<div id="toolbar">
-		<div id="play-pause"></div>
-		<div id="progress-bar"></div>
-		<div id="cut-point-list"></div>
-		<div id="progress-point"></div>
-		<div id="add-point"></div>
+	<div id="list">
+		<table id="list-table">
+			<thead>
+				<tr>
+					<th id="list-control">操作</th>
+					<th id="list-time">时间</th>
+					<th id="list-mood">情绪</th>
+					<th id="list-amplitude">强度</th>
+				</tr>
+			</thead>
+			<tbody id="list-tbody">
+			</tbody>
+		</table>
 	</div>
-
-	<div id="export"></div>
 
 	<script type="text/javascript" src="./index.js"></script>
 </body>

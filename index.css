@@ -1,4 +1,48 @@
-#main {
+#player {
+	width: 60%;
+	float: left;
+}
+
+#list {
+	float: left;
+	width: 40%;
+}
+
+#list-table {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+#list {
+	height: 600px;
+	overflow-y: scroll;
+}
+
+#list table, th, td {
+	border: 1px solid #ccc;
+}
+
+#list th, td {
+	padding: 10px;
+}
+
+#list-control {
+	width: 40px;
+}
+
+#list-time {
+	width: 100px;
+}
+
+#list-mood {
+	width: 50px;
+}
+
+#list-amplitude {
+	width: 120px;
+}
+
+#video {
 	width: 640px;
 	margin: 0 auto;
 }
