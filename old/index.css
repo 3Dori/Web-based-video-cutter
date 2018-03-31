@@ -1,0 +1,214 @@
+html {
+	font-family: Helvetica, Arial;
+}
+
+#player {
+	width: 60%;
+	float: left;
+}
+
+#list {
+	float: left;
+	width: 40%;
+}
+
+#list-table {
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+#list {
+	height: 600px;
+	overflow-y: scroll;
+}
+
+#list table, th, td {
+	border: 1px solid #ccc;
+}
+
+#list th, td {
+	padding: 10px;
+}
+
+#list-control {
+	width: 40px;
+}
+
+#list-time {
+	width: 100px;
+}
+
+#list-mood {
+	width: 50px;
+}
+
+#list-amplitude {
+	width: 120px;
+}
+
+#video {
+	width: 640px;
+	margin: 0 auto;
+	border: 1px solid #ccc;
+}
+
+#toolbar {
+	position: relative;
+	width: 90%;
+	height: 0px;
+	margin: 20px auto 0;
+	border-style: solid;
+	border-width: 20px;
+	border-radius: 20px;
+	border-color: #333;
+}
+
+#export {
+	position: relative;
+	width: 100px;
+	height: 0;
+	margin: 20px auto;
+	border-style: solid;
+	border-width: 20px;
+	border-radius: 20px;
+	border-color: #333;
+}
+
+#export:after {
+	position: absolute;
+	content: 'Export';
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font: 1.5em / 1.5em Helvetica;
+	color: #ccc;
+}
+
+#export:hover {
+	border-color: #344;
+}
+
+#export:active {
+	border-color: #322;
+}
+
+#play-pause {
+	position: absolute;
+	top: 50%;
+	left: 20px;
+	transform: translateY(-50%);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 8px 0 8px 13.856px;
+	border-color: transparent transparent transparent #999;
+}
+
+#play-pause:hover {
+	border-color: transparent transparent transparent #9aa;
+}
+
+#play-pause:active {
+	border-color: transparent transparent transparent #988;
+}
+
+#play-pause.paused {
+	width: 16px;
+	height: 16px;
+	background: repeating-linear-gradient(to right, #999, #999 4px, transparent 4px, transparent 8px);
+	border-style: none;
+}
+
+#play-pause.paused:hover {
+	background: repeating-linear-gradient(to right, #9aa, #9aa 4px, transparent 4px, transparent 8px);
+}
+
+#play-pause.paused:active {
+	background: repeating-linear-gradient(to right, #988, #988 4px, transparent 4px, transparent 8px);
+}
+
+#progress-bar {
+	position: absolute;
+	top: 50%;
+	left: 50px;
+	transform: translateY(-50%);
+	width: 480px;
+	height: 0px;
+	border-style: solid;
+	border-width: 2px;
+	border-radius: 2px;
+	border-color: #999;
+}
+
+#progress-point {
+	position: absolute;
+	top: 50%;
+	left: 50px;
+	transform: translateY(-50%);
+	width: 0;
+	height: 0;
+	border-style: solid;
+	border-width: 6px;
+	border-radius: 6px;
+	border-color: #666;
+}
+
+#progress-point:hover {
+	border-color: #677;
+}
+
+#progress-point:active {
+	border-color: #655;
+}
+
+#add-point {
+	position: absolute;
+	top: 50%;
+	left: 570px;
+	transform: translateY(-50%);
+	width: 16px;
+	height: 16px;
+	background-image: 
+		linear-gradient(transparent, transparent 5px, #999 5px, #999 11px, transparent 11px),
+		linear-gradient(to right, transparent, transparent 5px, #999 5px, #999 11px, transparent 11px)
+}
+
+#add-point:hover {
+	background-image: 
+		linear-gradient(transparent, transparent 5px, #9aa 5px, #9aa 11px, transparent 11px),
+		linear-gradient(to right, transparent, transparent 5px, #9aa 5px, #9aa 11px, transparent 11px)
+}
+
+#add-point:active {
+	background-image: 
+		linear-gradient(transparent, transparent 5px, #988 5px, #988 11px, transparent 11px),
+		linear-gradient(to right, transparent, transparent 5px, #988 5px, #988 11px, transparent 11px)
+}
+
+.cut-point {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 3px;
+	height: 4px;
+	background: white;
+}
+
+.tooltiptext {
+	visibility: hidden;
+	width: 80px;
+	background: #666;
+	color: #fff;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	opacity: 0.8;
+
+	position: absolute;
+	z-index: 1;
+	bottom: 100%;
+	margin-left: -40px;
+}
+
+.cut-point:hover .tooltiptext {
+	visibility: visible;
+}

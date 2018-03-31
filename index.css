@@ -1,180 +1,81 @@
-#player {
-	width: 60%;
-	float: left;
+html {
+  font-family: Helvetica, Arial;
 }
 
-#list {
-	float: left;
-	width: 40%;
+#video-main, #tool-plate {
+  float: left;
 }
 
-#list-table {
-	border-collapse: collapse;
-	table-layout: fixed;
+#tool-plate {
+  margin-left: 74px;
 }
 
-#list {
-	height: 600px;
-	overflow-y: scroll;
+.row label, .row select {
+  font-size: 20px;
 }
 
-#list table, th, td {
-	border: 1px solid #ccc;
+.col-50 {
+  display: inline-block;
+  margin-right: 60px;
+  margin-bottom: 10px;
 }
 
-#list th, td {
-	padding: 10px;
+.col-50 select {
+  width: 110px;
 }
 
-#list-control {
-	width: 40px;
+#mood-list {
+  margin-top: 36px;
 }
 
-#list-time {
-	width: 100px;
+.mood-btn {
+  display: inline-block;
+  margin-right: 18.5px;
+  margin-bottom: 20px;
+  width: 123px;
+  height: 41px;
+  background: #fff;
+  border: 1px solid #979797;
+  border-radius: 21px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 41px;
 }
 
-#list-mood {
-	width: 50px;
+#certainty {
+  width: 417px;
+  text-align: center;
+  margin-top: 100px;
 }
 
-#list-amplitude {
-	width: 120px;
+#most-certain {
+  float: left;
 }
 
-#video {
-	width: 640px;
-	margin: 0 auto;
+#certainty-input {
+  position: relative;
+  display: inline-block;
+  margin: 0 auto;
 }
 
-#toolbar {
-	position: relative;
-	width: 440px;
-	height: 0px;
-	margin: 0 auto;
-	border-style: solid;
-	border-width: 20px;
-	border-radius: 20px;
-	border-color: #333;
+#certainty-input input {
+  margin: 0 10px;
 }
 
-#export {
-	position: relative;
-	width: 100px;
-	height: 0;
-	margin: 20px auto;
-	border-style: solid;
-	border-width: 20px;
-	border-radius: 20px;
-	border-color: #333;
+#certainty-input input + span {
+  position: absolute;
+  top: 30px;
+  transform: translateX(-230%);
 }
 
-#export:after {
-	position: absolute;
-	content: 'Export';
-	left: 50%;
-	transform: translate(-50%, -50%);
-	font: 1.5em / 1.5em Helvetica;
-	color: #ccc;
+#certainty-group {
+  float: left;
 }
 
-#export:hover {
-	border-color: #344;
+#least-certain {
+  float: right;
 }
 
-#export:active {
-	border-color: #322;
-}
-
-#play-pause {
-	position: absolute;
-	top: 50%;
-	left: 20px;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 8px 0 8px 13.856px;
-	border-color: transparent transparent transparent #999;
-}
-
-#play-pause:hover {
-	border-color: transparent transparent transparent #9aa;
-}
-
-#play-pause:active {
-	border-color: transparent transparent transparent #988;
-}
-
-#play-pause.paused {
-	width: 16px;
-	height: 16px;
-	background: repeating-linear-gradient(to right, #999, #999 4px, transparent 4px, transparent 8px);
-	border-style: none;
-}
-
-#play-pause.paused:hover {
-	background: repeating-linear-gradient(to right, #9aa, #9aa 4px, transparent 4px, transparent 8px);
-}
-
-#play-pause.paused:active {
-	background: repeating-linear-gradient(to right, #988, #988 4px, transparent 4px, transparent 8px);
-}
-
-#progress-bar {
-	position: absolute;
-	top: 50%;
-	left: 50px;
-	transform: translateY(-50%);
-	width: 320px;
-	height: 0px;
-	border-style: solid;
-	border-width: 2px;
-	border-radius: 2px;
-	border-color: #999;
-}
-
-#progress-point {
-	position: absolute;
-	top: 50%;
-	left: 50px;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 6px;
-	border-radius: 6px;
-	border-color: #666;
-}
-
-#progress-point:hover {
-	border-color: #677;
-}
-
-#progress-point:active {
-	border-color: #655;
-}
-
-#add-point {
-	position: absolute;
-	top: 50%;
-	left: 410px;
-	transform: translateY(-50%);
-	width: 16px;
-	height: 16px;
-	background-image: 
-		linear-gradient(transparent, transparent 5px, #999 5px, #999 11px, transparent 11px),
-		linear-gradient(to right, transparent, transparent 5px, #999 5px, #999 11px, transparent 11px)
-}
-
-#add-point:hover {
-	background-image: 
-		linear-gradient(transparent, transparent 5px, #9aa 5px, #9aa 11px, transparent 11px),
-		linear-gradient(to right, transparent, transparent 5px, #9aa 5px, #9aa 11px, transparent 11px)
-}
-
-#add-point:active {
-	background-image: 
-		linear-gradient(transparent, transparent 5px, #988 5px, #988 11px, transparent 11px),
-		linear-gradient(to right, transparent, transparent 5px, #988 5px, #988 11px, transparent 11px)
+#certainty-text {
+  clear: both;
 }

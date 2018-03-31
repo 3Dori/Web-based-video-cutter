@@ -2,41 +2,83 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>Web based video cutter</title>
+	<title>狼人杀标注</title>
 	<link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
-	<div id="player">
-		<div id="video">
-			<video width="640" height="480" id="main-video">
-				<source src="sample.mp4" type="video/mp4" />
-			</video>
+<div id="main">
+	<video width="588" height="396" id="video-main">
+		<source src="./sample.mp4" type="video/mp4"/>
+	</video>
+	<div id="tool-plate">
+		<div class="row">
+			<div class="col-50">
+				<label for="gameplay">场次：</label>
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
+			<div class="col-50">
+				<label for="playerid">编号：</label>
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
 		</div>
-		<div id="toolbar">
-			<div id="play-pause"></div>
-			<div id="progress-bar"></div>
-			<div id="cut-point-list"></div>
-			<div id="progress-point"></div>
-			<div id="add-point"></div>
+		<div class="row">
+			<div class="col-50">
+				<label for="identity">身份：</label>
+				<select>
+					<option>平民</option>
+					<option>狼人</option>
+					<option>预言家</option>
+					<option>女巫</option>
+					<option>猎人</option>
+				</select>
+			</div>
+			<div class="col-50">
+				<label for="gender">性别：</label>
+				<select>
+					<option>男</option>
+					<option>女</option>
+				</select>
+			</div>
 		</div>
-		<div id="export"></div>
+		<div id="mood-list">
+			<div class="row">
+				<div class="mood-btn">开心</div>
+				<div class="mood-btn">厌恶</div>
+				<div class="mood-btn">愤怒</div>
+			</div>
+			<div class="row">
+				<div class="mood-btn">悲伤</div>
+				<div class="mood-btn">害怕</div>
+				<div class="mood-btn">中性</div>
+			</div>
+		</div>
+		<div id="certainty">
+			<div id="most-certain">最不确定</div>
+			<div id="certainty-input">
+				<input type="radio" name="certainty" value="1" /><span>1</span>
+				<input type="radio" name="certainty" value="2" /><span>2</span>
+				<input type="radio" name="certainty" value="3" /><span>3</span>
+				<input type="radio" name="certainty" value="4" /><span>4</span>
+				<input type="radio" name="certainty" value="5" /><span>5</span>
+			</div>
+			<div id="least-certain">最确定</div>
+			<div id="certainty-text">
+			</div>
+		</div>
 	</div>
-
-	<div id="list">
-		<table id="list-table">
-			<thead>
-				<tr>
-					<th id="list-control">操作</th>
-					<th id="list-time">时间</th>
-					<th id="list-mood">情绪</th>
-					<th id="list-amplitude">强度</th>
-				</tr>
-			</thead>
-			<tbody id="list-tbody">
-			</tbody>
-		</table>
+	<div id="progress-bar">
 	</div>
-
-	<script type="text/javascript" src="./index.js"></script>
+</div>
+<script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+</script>
 </body>
 </html>
