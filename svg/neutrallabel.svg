@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="64px" viewBox="0 0 22 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-5.0%" y="-3.2%" width="120.0%" height="108.1%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="1" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-13" transform="translate(-24.000000, 0.000000)">
+            <g id="Group-4" filter="url(#filter-1)" transform="translate(24.000000, 1.000000)">
+                <polyline id="Line" stroke="#000000" stroke-linecap="square" points="10 25.2190339 10 62 10 20"></polyline>
+                <g id="emoji_line-(57)" fill="#000000" fill-rule="nonzero">
+                    <path d="M10,20 C4.4771525,20 6.76353751e-16,15.5228475 0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 C15.5228475,-1.01453063e-15 20,4.4771525 20,10 C20,12.6521649 18.9464316,15.195704 17.0710678,17.0710678 C15.195704,18.9464316 12.6521649,20 10,20 Z M10,1.02567742 C5.0436185,1.02567742 1.02567742,5.0436185 1.02567742,10 C1.02567742,14.9563815 5.0436185,18.9743226 10,18.9743226 C14.9563815,18.9743226 18.9743226,14.9563815 18.9743226,10 C18.9743226,7.61986167 18.0288163,5.3372076 16.3458044,3.65419565 C14.6627924,1.97118369 12.3801383,1.02567742 10,1.02567742 Z M13.5483871,7.22580645 L15.7419355,7.22580645 L15.7419355,9.16129033 L13.5483871,9.16129033 L13.5483871,7.22580645 Z M6.77419355,11.7419355 L13.2258064,11.7419355 L13.2258064,12.3870968 L6.77419355,12.3870968 L6.77419355,11.7419355 Z M4.25806451,7.22580645 L6.45161291,7.22580645 L6.45161291,9.16129033 L4.25806451,9.16129033 L4.25806451,7.22580645 Z" id="Shape"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

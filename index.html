@@ -7,31 +7,18 @@
 </head>
 <body>
 <div id="main">
-	<video width="588" height="396" id="video-main">
-		<source src="./sample.mp4" type="video/mp4"/>
-	</video>
-	<div id="tool-plate">
-		<div class="row">
-			<div class="col-50">
-				<label for="gameplay">场次：</label>
+	<div class="left">
+		<div id="tool-plate">
+			<div class="row">
+				<label for="gameplay">玩家场次：</label>
 				<select>
 					<option>01</option>
 					<option>02</option>
 					<option>03</option>
 				</select>
 			</div>
-			<div class="col-50">
-				<label for="playerid">编号：</label>
-				<select>
-					<option>01</option>
-					<option>02</option>
-					<option>03</option>
-				</select>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-50">
-				<label for="identity">身份：</label>
+			<div class="row">
+				<label for="identity">玩家身份：</label>
 				<select>
 					<option>平民</option>
 					<option>狼人</option>
@@ -40,41 +27,69 @@
 					<option>猎人</option>
 				</select>
 			</div>
-			<div class="col-50">
-				<label for="gender">性别：</label>
+			<div class="row">
+				<label for="playerid">玩家编号：</label>
+				<select>
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="gender">玩家性别：</label>
 				<select>
 					<option>男</option>
 					<option>女</option>
 				</select>
 			</div>
 		</div>
-		<div id="mood-list">
-			<div class="row">
-				<div class="mood-btn">开心</div>
-				<div class="mood-btn">厌恶</div>
-				<div class="mood-btn">愤怒</div>
-			</div>
-			<div class="row">
-				<div class="mood-btn">悲伤</div>
-				<div class="mood-btn">害怕</div>
-				<div class="mood-btn">中性</div>
-			</div>
-		</div>
-		<div id="certainty">
-			<div id="most-certain">最不确定</div>
-			<div id="certainty-input">
-				<input type="radio" name="certainty" value="1" /><span>1</span>
-				<input type="radio" name="certainty" value="2" /><span>2</span>
-				<input type="radio" name="certainty" value="3" /><span>3</span>
-				<input type="radio" name="certainty" value="4" /><span>4</span>
-				<input type="radio" name="certainty" value="5" /><span>5</span>
-			</div>
-			<div id="least-certain">最确定</div>
-			<div id="certainty-text">
-			</div>
-		</div>
+		<div id="submit-btn">提交</div>
 	</div>
-	<div id="progress-bar">
+	<div class="right">
+		<video width="1253" height="510" id="video-main">
+			<source src="./sample.mp4" type="video/mp4"/>
+		</video>
+		<div id="video-control">
+			<div id="pause-btn"></div>
+			<div id="progress-bar">
+				<div id="progress-bar-played"></div>
+			</div>
+			<div id="sound-btn"></div>
+		</div>
+		<div id="affection-marker">
+			<div id="add-affection" class="remove">
+				<div id="add-affection-btn">+ 添加情感</div>
+				<div id="remove-affection-btn">- 删除情感</div>
+			</div>
+			<div id="affection-type">
+				<div id="affection-type-text">情感类型：</div>
+				<div id="affection-icons">
+					<div class="affection-icon-row">
+						<div id="neutral" class="affection-icon">中 性</div>
+						<div id="sadness" class="affection-icon">悲 伤</div>
+						<div id="happy" class="affection-icon">开 心</div>
+					</div>
+					<div class="affection-icon-row">
+						<div id="disgust" class="affection-icon">厌 恶</div>
+						<div id="anger" class="affection-icon">愤 怒</div>
+						<div id="fear" class="affection-icon">害 怕</div>
+					</div>
+				</div>
+			</div>
+			<div id="certainty">
+				<h1>确信度</h1>
+				<div id="least-certain-text">最不确定</div>
+				<div id="most-certain-text">最确定</div>
+				<input id="certainty-range" type="range" min="1" max="5" />
+				<div id="certainty-range-text">
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>
 <script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>
