@@ -45,7 +45,7 @@ html, body {
 
 #submit-btn {
   position: absolute;
-  bottom: 97px;
+  top: 700px;
   left: 13px;
   width: 150px;
   height: 38px;
@@ -60,9 +60,9 @@ html, body {
 #video-control {
   position: relative;
   margin-top: -4px;
-  width: 100%;
+  width: 1253px;
   height: 108px;
-  border-top: 1px solid #dcdcdc;
+  border-top: 1px solid white;
   border-bottom: 1px solid #dcdcdc;
 }
 
@@ -80,6 +80,12 @@ html, body {
   mask: url('./svg/pause.svg') 0 0/26px 26px;
 }
 
+#pause-btn.paused {
+  left: 52px;
+  -webkit-mask: url('./svg/play.svg') 0 0/26px 26px;
+  mask: url('./svg/play.svg') 0 0/26px 26px;
+}
+
 #sound-btn {
   right: 52px;
   -webkit-mask: url('./svg/sound.svg') 0 0/26px 26px;
@@ -87,6 +93,7 @@ html, body {
 }
 
 #progress-bar {
+  position: relative;
   margin: 50px auto;
   width: 1064px;
   height: 17px;
@@ -95,11 +102,31 @@ html, body {
 }
 
 #progress-bar-played {
-  width: 100px;
+  width: 9px;
   height: 17px;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
   background: #d8d8d8;
+}
+
+#progress-drag {
+  position: absolute;
+  top: 3px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: black;
+}
+
+#progress-drag:after {
+  position: absolute;
+  content: "";
+  top: -9px;
+  left: 4px;
+  width: 1px;
+  height: 28px;
+  background: black;
 }
 
 .disabled, .disabled .affection-icon {
@@ -115,9 +142,12 @@ html, body {
 
 #add-affection, #affection-type, #certainty {
   box-shadow: 0 2px 10px -2px #929292;
-  margin-right: 10px;
   float: left;
   background: white;
+}
+
+#add-affection, #affection-type {
+  margin-right: 8px;
 }
 
 #add-affection {

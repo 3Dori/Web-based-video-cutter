@@ -50,18 +50,19 @@
 			<source src="./sample.mp4" type="video/mp4"/>
 		</video>
 		<div id="video-control">
-			<div id="pause-btn"></div>
+			<div id="pause-btn" class="paused"></div>
 			<div id="progress-bar">
 				<div id="progress-bar-played"></div>
+				<div id="progress-drag"></div>
 			</div>
 			<div id="sound-btn"></div>
 		</div>
 		<div id="affection-marker">
-			<div id="add-affection" class="remove">
+			<div id="add-affection">
 				<div id="add-affection-btn">+ 添加情感</div>
 				<div id="remove-affection-btn">- 删除情感</div>
 			</div>
-			<div id="affection-type">
+			<div id="affection-type" class="disabled">
 				<div id="affection-type-text">情感类型：</div>
 				<div id="affection-icons">
 					<div class="affection-icon-row">
@@ -76,7 +77,7 @@
 					</div>
 				</div>
 			</div>
-			<div id="certainty">
+			<div id="certainty" class="disabled">
 				<h1>确信度</h1>
 				<div id="least-certain-text">最不确定</div>
 				<div id="most-certain-text">最确定</div>
