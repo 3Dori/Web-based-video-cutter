@@ -107,16 +107,55 @@ html, body {
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
   background: #d8d8d8;
+  z-index: 1;
+}
+
+#tag-list {
+  position: relative;
+}
+
+.tag {
+  position: absolute;
+  top: -55px;
+  background-size: 22px 65px;
+  width: 22px;
+  height: 65px;
+  z-index: 2;
+}
+
+.tag-neutral {
+  background-image: url('./svg/neutrallabel.svg');
+}
+
+.tag-sadness {
+  background-image: url('./svg/sadnesslabel.svg');
+}
+
+.tag-happy {
+  background-image: url('./svg/happylabel.svg');
+}
+
+.tag-disgust {
+  background-image: url('./svg/disgustlabel.svg');
+}
+
+.tag-anger {
+  background-image: url('./svg/angerlabel.svg');
+}
+
+.tag-fear {
+  background-image: url('./svg/fearlabel.svg');
 }
 
 #progress-drag {
   position: absolute;
   top: 3px;
-  left: 4px;
+  left: 6px;
   width: 10px;
   height: 10px;
   border-radius: 5px;
   background: black;
+  z-index: 3;
 }
 
 #progress-drag:after {
@@ -242,6 +281,10 @@ html, body {
   line-height: 32px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.affection-icon.selected {
+  background: #d8d8d8;
 }
 
 .affection-icon:before {
