@@ -15,6 +15,7 @@
 		<video id="video-main">
 			<source src="./sample.mp4" type="video/mp4"/>
 		</video>
+		<div id="pause-btn"></div>
 	</div>
 	<div id="right">
 		<div id="tool-plate-title">
@@ -58,7 +59,7 @@
 		<div id="tag-editor-title">
 			标签编辑面板：
 		</div>
-		<div id="affection-type">
+		<div id="affection-type" class="disabled">
 			<div id="affection-type-title" class="h1">情感类型：</div>
 			<div id="affection-icons">
 				<div id="neutral" class="affection-icon selected">中性</div>
@@ -69,12 +70,12 @@
 				<div id="fear" class="affection-icon">害怕</div>
 			</div>
 		</div>
-		<div id="certainty">
+		<div id="certainty" class="disabled">
 			<div id="certainty-title" class="h1">确信度：</div>
 			<div id="certainty-bar">
 				<div id="least-certain-text">最不确定</div>
 				<div id="most-certain-text">最确定</div>
-				<input id="certainty-range" type="range" min="1" max="5" />
+				<input id="certainty-range" type="range" min="1" max="5" disabled />
 				<div id="certainty-range-text">
 					<div>1</div>
 					<div>2</div>
@@ -88,17 +89,15 @@
 			标签视图：
 		</div>
 		<div id="tag-view">
-			<!-- <div id="pause-btn" class="paused"></div> -->
 			<div id="progress-bar">
 				<div id="progress-bar-played"></div>
 				<div id="progress-drag"></div>
 				<div id="tag-list"></div>
 			</div>
-			<!-- <div id="sound-btn"></div> -->
 		</div>
 
 		<div id="btn-group">
-			<div id="add-remove-affection" class="remove">
+			<div id="add-remove-affection">
 				<div id="add-affection" class="btn">+ 添加情感</div>
 				<div id="remove-affection" class="btn">- 删除情感</div>
 			</div>
@@ -106,40 +105,61 @@
 			<div id="next-affection" class="btn">&gt; 下一标签</div>
 			<div id="submit" class="btn">提交</div>
 		</div>
-		<!-- <div id="affection-marker">
-			<div id="add-affection">
-				<div id="add-affection-btn">+ 添加情感</div>
-				<div id="remove-affection-btn">- 删除情感</div>
-			</div>
-			<div id="affection-type" class="disabled">
-				<div id="affection-type-text">情感类型：</div>
-				<div id="affection-icons">
-					<div class="affection-icon-row">
-						<div id="neutral" class="affection-icon selected">中 性</div>
-						<div id="sadness" class="affection-icon">悲 伤</div>
-						<div id="happy" class="affection-icon">开 心</div>
-					</div>
-					<div class="affection-icon-row">
-						<div id="disgust" class="affection-icon">厌 恶</div>
-						<div id="anger" class="affection-icon">愤 怒</div>
-						<div id="fear" class="affection-icon">害 怕</div>
-					</div>
-				</div>
-			</div>
-			<div id="certainty" class="disabled">
-				<h1>确信度</h1>
-				<div id="least-certain-text">最不确定</div>
-				<div id="most-certain-text">最确定</div>
-				<input id="certainty-range" disabled type="range" min="1" max="5" />
-				<div id="certainty-range-text">
-					<span>1</span>
-					<span>2</span>
-					<span>3</span>
-					<span>4</span>
-					<span>5</span>
-				</div>
-			</div>
-		</div> -->
+	</div>
+</div>
+<div id="confirm-tags" class="dialog">
+	<div class="confirm-header"></div>
+	<div class="confirm-title">请确认标签信息</div>
+	<div id="confirm-tags-tags">
+		<div id="confirm-tags-progress-bar"></div>
+		<div id="confirm-tags-tag-list"></div>
+	</div>
+	<div class="confirm-btn-group">
+		<div id="back-to-edit" class="btn">返回修改</div>
+		<div id="next-step" class="btn">下一步</div>
+	</div>
+</div>
+<div id="confirm-info" class="dialog">
+	<div class="confirm-header"></div>
+	<div class="confirm-title">请确认标签信息</div>
+	<div id="confirm-info-plate">
+		<div>
+			<label for="confirm-gameid">场次：</label>
+			<select id="confirm-gameid">
+				<option>01</option>
+				<option>02</option>
+				<option>03</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-gender">性别：</label>
+			<select id="confirm-gender">
+				<option>男</option>
+				<option>女</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-identity">身份：</label>
+			<select id="confirm-identity">
+				<option>平民</option>
+				<option>狼人</option>
+				<option>预言家</option>
+				<option>女巫</option>
+				<option>猎人</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-playerid">编号：</label>
+			<select id="confirm-playerid">
+				<option>01</option>
+				<option>02</option>
+				<option>03</option>
+			</select>
+		</div>
+	</div>
+	<div class="confirm-btn-group">
+		<div id="prev-step" class="btn">上一步</div>
+		<div id="confirm-submit" class="btn">确认提交</div>
 	</div>
 </div>
 <script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>

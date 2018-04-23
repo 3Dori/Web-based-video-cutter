@@ -1,4 +1,5 @@
 html, body {
+  position: relative;
   margin: 0;
   height: 100%;
 }
@@ -42,12 +43,45 @@ header {
   height: calc(100vh - 59px);
   overflow: hidden;
 }
+#pause-btn {
+  position: absolute;
+  left: 30px;
+  bottom: 110px;
+  width: 75px;
+  height: 75px;
+  background-color: #fff;
+  box-shadow: 0 5px 4px #999;
+}
+#pause-btn:after {
+  position: absolute;
+  content: '';
+  top: 30px;
+  left: 32px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 0 8px 13.856px;
+  border-color: transparent transparent transparent #70cfe2;
+}
+
+#pause-btn.paused:after {
+  top: 29px;
+  left: 31.5px;
+  width: 12px;
+  height: 17px;
+  border: 0 none;
+  background: linear-gradient(to right, #70cfe2 0, #70cfe2 2px, #fff 2px, #fff 10px, #70cfe2 10px, #70cfe2 12px);
+}
 
 video {
   position: absolute;
   left: calc(28.125vh - 16.59375px - 88.8888889%);
   width: 177.7777778%;
   height: auto;
+}
+
+.disabled {
+  pointer-events: none;
 }
 
 #right {
@@ -62,7 +96,6 @@ video {
 }
 
 .h1 {
-  font-family: "PingFangSC-Regular", Helvetica, Sans-serif;
   font-weight: 600;
   letter-spacing: 3.3px;
   color: #676767;
@@ -77,7 +110,6 @@ video {
   color: #323232;
   letter-spacing: 1.8px;
 }
-
 #tool-plate {
   display: flex;
   flex: 85;
@@ -85,11 +117,9 @@ video {
   padding-right: 73px;
   background: #f0f0f0;
 }
-
 #tool-plate > div {
   flex-grow: 1;
 }
-
 #tool-plate select {
   margin-left: 9px;
   width: 91px;
@@ -251,7 +281,7 @@ video {
 #certainty-range-text {
   position: absolute;
   left: 5px;
-  top: 52px;
+  top: 60px;
   display: flex;
   justify-content: space-between;
   width: 413px;
@@ -264,34 +294,32 @@ video {
 
 #tag-view {
   flex: 90;
-  padding-left: 48px !important;
+  margin-top: 52px;
+  padding-left: 47px !important;
   padding-right: 48px !important;
 }
 
 #progress-bar {
   position: relative;
-  /*width: calc(100% - 94px);*/
-  height: 17px;
+  height: 13px;
   border: 1px solid #a9a9a9;
-  border-radius: 9px;
+  border-radius: 7px;
 }
-
 #progress-bar-played {
   width: 10px;
-  height: 17px;
-  border-top-left-radius: 9px;
-  border-bottom-left-radius: 9px;
+  height: 13px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
   background: #d8d8d8;
   z-index: 1;
 }
-
 #tag-list {
   position: relative;
 }
 
 .tag {
   position: absolute;
-  top: -55px;
+  top: -63px;
   background-size: 22px 65px;
   width: 22px;
   height: 65px;
@@ -318,8 +346,8 @@ video {
 
 #progress-drag {
   position: absolute;
-  top: 3px;
-  left: 6px;
+  top: 1.75px;
+  left: 3px;
   width: 10px;
   height: 10px;
   border-radius: 5px;
@@ -344,6 +372,7 @@ video {
 }
 
 .btn {
+  margin-right: 12px;
   width: 150px;
   height: 37px;
   border-radius: 37px;
@@ -352,10 +381,6 @@ video {
   font-size: 14px;
   letter-spacing: 0.5px;
   cursor: pointer;
-}
-
-.btn:not(:last-child) {
-  margin-left: 12px;
 }
 
 #add-affection {
@@ -382,4 +407,96 @@ video {
 }
 #submit {
   margin-left: auto;
+  margin-right: 0;
+}
+
+.dialog {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  box-shadow: 0 3px 17px rgba(0,0,0,.8);
+  font-family: "PingFangSC-Regular", Helvetica, Sans-serif;
+  z-index: 4;
+}
+.confirm-header {
+  width: 100%;
+  height: 32px;
+  background: #4a5863;
+}
+.confirm-title {
+  margin-top: 16px;
+  text-align: center;
+  font-size: 20px;
+  color: #1d1b26;
+  letter-spacing: 1.8px;
+}
+#confirm-info .confirm-title {
+  margin-top: 19px;
+}
+
+#confirm-tags {
+  display: none;
+  width: 910px;
+  height: 296px;
+}
+#confirm-info {
+  width: 470px;
+  height: 328px;
+}
+
+#confirm-tags-progress-bar {
+  position: relative;
+  margin: 70px auto;
+  width: 813px;
+  height: 13px;
+  border: 1px solid #a9a9a9;
+  border-radius: 7px;
+}
+
+#confirm-tags-tag-list .tag {
+  position: absolute;
+  top: 95px;
+  transform: translateX(51.5px);
+}
+
+.confirm-btn-group {
+  display: flex;
+  justify-content: center;
+  color: #fff;
+}
+#back-to-edit, #prev-step {
+  margin-right: 14px;
+  background: #a2a2a2;
+}
+#next-step, #confirm-submit {
+  background: #70cfe2;
+}
+
+#confirm-info-plate {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px auto 50.5px;
+  width: 340px;
+  height: 102px;
+  justify-content: space-between;
+}
+#confirm-info-plate > div {
+  width: 158px;
+  height: 16px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+#confirm-info-plate > div {
+  width: 158px;
+  height: 16px;
+  font-size: 14px;
+  letter-spacing: 0.4px;
+}
+
+#confirm-info-plate select {
+  margin-left: 29px;
+  width: 77px;
 }
