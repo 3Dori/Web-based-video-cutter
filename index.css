@@ -1,108 +1,283 @@
-html {
-  font-family: Helvetica, Arial;
-}
-
 html, body {
   margin: 0;
   height: 100%;
 }
 
-#main {
+header {
+  height: 59px;
+  background: linear-gradient(to right, #1d1b26 0, #1d1b26 59px, white 59px)
+}
+
+@font-face {
+  font-family: 'Avenir Next';
+  src: url("./fonts/Avenir Next.ttc");
+}
+
+#title {
+  margin-left: 88px;
+  line-height: 59px;
+  font-family: "Avenir Next", Arial, Sans-serif;
+  font-size: 20px;
+  color: #4a5863;
+}
+#werewolf {
+  color: #70cfe2;
+}
+
+#row {
+  display: flex;
+  height: calc(100% - 59px);
+  border-top: 1px solid #70cfe2;
+}
+
+#left-bar {
+  min-width: 59px;
+  height: 100%;
+  background: linear-gradient(#4a5863 0, #4a5863 29px, #70cfe2 29px, #70cfe2 88px, #4a5863 88px);
+}
+
+#video-wrap {
   position: relative;
-  height: 100%;
+  width: calc(56.25vh - 33.1875px);
+  height: calc(100vh - 59px);
+  overflow: hidden;
 }
 
-.left {
+video {
   position: absolute;
-  left: 0;
-  width: 187px;
-  height: 100%;
+  left: calc(28.125vh - 16.59375px - 88.8888889%);
+  width: 177.7777778%;
+  height: auto;
 }
 
-.right {
-  position: absolute;
-  height: 100%;
-  left: 187px;
-  right: 0;
-  border-left: 1px solid #dcdcdc;
+#right {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  font-family: "PingFangSC-Regular", Helvetica, Sans-serif;
+}
+
+#right > div {
+  padding-left: 73px;
+}
+
+.h1 {
+  font-family: "PingFangSC-Regular", Helvetica, Sans-serif;
+  font-weight: 600;
+  letter-spacing: 3.3px;
+  color: #676767;
+}
+
+#tool-plate-title {
+  display: flex;
+  flex: 62;
+  align-items: center;
+  background: #f0f0f0;
+  font-size: 20px;
+  color: #323232;
+  letter-spacing: 1.8px;
 }
 
 #tool-plate {
-  margin-left: 10px;
-  margin-top: 38px;
+  display: flex;
+  flex: 85;
+  align-items: center;
+  padding-right: 73px;
+  background: #f0f0f0;
 }
 
-#tool-plate .row {
-  margin-bottom: 34px;
-  font-size: 12px;
-  font-weight: bold;
+#tool-plate > div {
+  flex-grow: 1;
 }
 
 #tool-plate select {
-  margin-left: 20px;
-  width: 75px;
+  margin-left: 9px;
+  width: 91px;
+  font-size: 20px;
 }
 
-#submit-btn {
+#tag-editor-title {
+  display: flex;
+  flex: 59;
+  align-items: center;
+  background: #e6e6e6;
+  color: #7c7c7c;
+  letter-spacing: 2.2px;
+}
+
+/* Two lines */
+#affection-type:after, #certainty:after {
+  content: '';
   position: absolute;
-  top: 700px;
-  left: 13px;
-  width: 150px;
-  height: 38px;
+  bottom: 0;
+  left: 73px;
+  right: 73px;
+  height: 1px;
+  background: #c2c2c2;
+}
+
+#affection-type {
+  position: relative;
+  display: flex;
+  /*height: 171px;*/
+  flex: 171;
+}
+
+#affection-type-title {
+  padding-top: 36px;
+}
+
+#affection-icons {
+  display: flex;
+  align-content: space-around;
+  height: 73px;
+  flex-wrap: wrap;
+  width: 423px;
+  margin-top: 36px;
+  margin-left: auto;
+  padding-right: 73px;
+}
+
+.affection-icon {
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+  width: 133px;
+  height: 32px;
   border: 1px solid #8b8585;
-  border-radius: 19px;
-  font-size: 14px;
+  border-radius: 3px;
   text-align: center;
-  line-height: 38px;
+  text-indent: 21px;
+  line-height: 32px;
+  font-size: 14px;
+  letter-spacing: 5px;
   cursor: pointer;
 }
 
-#video-control {
-  position: relative;
-  margin-top: -4px;
-  width: 1253px;
-  height: 108px;
-  border-top: 1px solid white;
-  border-bottom: 1px solid #dcdcdc;
+.affection-icon.selected {
+  background: #000;
+  color: #fff;
 }
 
-#pause-btn, #sound-btn {
+.affection-icon:before {
   position: absolute;
-  top: 47px;
-  width: 26px;
-  height: 26px;
-  background-color: #707070;
+  background-size: 20px 20px;
+  background-color: #000;
+  display: inline-block;
+  top: 6px;
+  left: 6px;
+  width: 20px;
+  height: 20px;
+  content: "";
 }
 
-#pause-btn {
-  left: 52px;
-  -webkit-mask: url('./svg/pause.svg') 0 0/26px 26px;
-  mask: url('./svg/pause.svg') 0 0/26px 26px;
+.affection-icon.selected:before {
+  background-color: #fff;
 }
 
-#pause-btn.paused {
-  left: 52px;
-  -webkit-mask: url('./svg/play.svg') 0 0/26px 26px;
-  mask: url('./svg/play.svg') 0 0/26px 26px;
+.affection-icon.selected:after {
+  position: absolute;
+  content: '';
+  top: -8.5px;
+  left: -8.5px;
+  width: 17px;
+  height: 17px;
+  border-radius: 17px;
+  background: #70cfe2;
 }
 
-#sound-btn {
-  right: 52px;
-  -webkit-mask: url('./svg/sound.svg') 0 0/26px 26px;
-  mask: url('./svg/sound.svg') 0 0/26px 26px;
+#neutral:before {
+  -webkit-mask: url('./svg/neutral.svg') 0 0/20px 20px;
+  mask: url('./svg/neutral.svg') 0 0/20px 20px;
+}
+#sadness:before {
+  -webkit-mask: url('./svg/sadness.svg') 0 0/20px 20px;
+  mask: url('./svg/sadness.svg') 0 0/20px 20px;
+}
+#happy:before {
+  -webkit-mask: url('./svg/happy.svg') 0 0/20px 20px;
+  mask: url('./svg/happy.svg') 0 0/20px 20px;
+}
+#disgust:before {
+  -webkit-mask: url('./svg/disgust.svg') 0 0/20px 20px;
+  mask: url('./svg/disgust.svg') 0 0/20px 20px;
+}
+#anger:before {
+  -webkit-mask: url('./svg/anger.svg') 0 0/20px 20px;
+  mask: url('./svg/anger.svg') 0 0/20px 20px;
+}
+#fear:before {
+  -webkit-mask: url('./svg/fear.svg') 0 0/20px 20px;
+  mask: url('./svg/fear.svg') 0 0/20px 20px;
+}
+
+/* Certainty */
+#certainty {
+  position: relative;
+  display: flex;
+  flex: 130;
+}
+#certainty-title {
+  padding-top: 21px;
+}
+#certainty-bar {
+  position: relative;
+  margin-top: 21px;
+  margin-left: auto;
+  width: 417px;
+  padding-right: 73px;
+}
+#least-certain-text, #most-certain-text {
+  color: #909090;
+  font-size: 11px;
+  letter-spacing: 0.4px;
+}
+#least-certain-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#most-certain-text {
+  position: absolute;
+  top: 0;
+  left: 383.2px;
+}
+#certainty-range {
+  position: absolute;
+  top: 36px;
+  left: 0;
+  width: 417px;
+}
+#certainty-range-text {
+  position: absolute;
+  left: 5px;
+  top: 52px;
+  display: flex;
+  justify-content: space-between;
+  width: 413px;
+}
+
+#tag-view-title {
+  flex: 62;
+  padding-top: 21px;
+}
+
+#tag-view {
+  flex: 90;
+  padding-left: 48px !important;
+  padding-right: 48px !important;
 }
 
 #progress-bar {
   position: relative;
-  margin: 50px auto;
-  width: 1064px;
+  /*width: calc(100% - 94px);*/
   height: 17px;
   border: 1px solid #a9a9a9;
   border-radius: 9px;
 }
 
 #progress-bar-played {
-  width: 9px;
+  width: 10px;
   height: 17px;
   border-top-left-radius: 9px;
   border-bottom-left-radius: 9px;
@@ -122,27 +297,21 @@ html, body {
   height: 65px;
   z-index: 2;
 }
-
 .tag-neutral {
   background-image: url('./svg/neutrallabel.svg');
 }
-
 .tag-sadness {
   background-image: url('./svg/sadnesslabel.svg');
 }
-
 .tag-happy {
   background-image: url('./svg/happylabel.svg');
 }
-
 .tag-disgust {
   background-image: url('./svg/disgustlabel.svg');
 }
-
 .tag-anger {
   background-image: url('./svg/angerlabel.svg');
 }
-
 .tag-fear {
   background-image: url('./svg/fearlabel.svg');
 }
@@ -168,201 +337,49 @@ html, body {
   background: black;
 }
 
-.disabled, .disabled .affection-icon {
-  opacity: 0.5;
-  cursor: not-allowed;
+#btn-group {
+  display: flex;
+  flex: 189;
+  padding-right: 73px;
 }
 
-#affection-marker {
-  height: calc(100% - 620px);
-  background: #ebebeb;
-  overflow: hidden;
+.btn {
+  width: 150px;
+  height: 37px;
+  border-radius: 37px;
+  text-align: center;
+  line-height: 37px;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
 }
 
-#add-affection, #affection-type, #certainty {
-  box-shadow: 0 2px 10px -2px #929292;
-  float: left;
-  background: white;
-}
-
-#add-affection, #affection-type {
-  margin-right: 8px;
+.btn:not(:last-child) {
+  margin-left: 12px;
 }
 
 #add-affection {
-  position: relative;
-  width: 300px;
-  height: 198px;
-}
-
-#add-affection.remove #add-affection-btn {
-  display: none;
-}
-
-#add-affection.remove #remove-affection-btn {
   display: block;
 }
-
-#add-affection-btn, #remove-affection-btn {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 172px;
-  height: 38px;
-  border-radius: 19px;
-  border: 1px solid #8b8b85;
-  font-size: 14px;
-  text-align: center;
-  line-height: 38px;
-  cursor: pointer;
-}
-
-#remove-affection-btn {
+#remove-affection {
   display: none;
 }
-
-#add-affection-btn {
-  color: white;
-  background: black;
+#add-remove-affection.remove #add-affection {
+  display: none;
 }
-
-#affection-type {
-  width: 636px;
-  height: 198px;
-  overflow: hidden;
+#add-remove-affection.remove #remove-affection {
+  display: block;
 }
-
-#affection-type-text {
-  float: left;
-  width: 198px;
-  height: 198px;
-  text-align: center;
-  line-height: 198px;
-  font-size: 14px;
-  font-weight: bold;
-  box-shadow: 0 0 2px #929292;
+#add-affection, #remove-affection {
+  background: #fff;
+  color: #70cfe2;
+  border: 1px solid #70cfe2;
 }
-
-#affection-icons {
-  position: relative;
-  float: left;
-  width: 438px;
-  height: 198px;
+#prev-affection, #next-affection, #submit {
+  background: #a2a2a2;
+  color: #fff;
+  border: 1px solid #9b9b9b;
 }
-
-.affection-icon-row {
-  width: 294px;
-}
-
-.affection-icon-row:first-child {
-  position: absolute;
-  top: 55px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.affection-icon-row:last-child {
-  position: absolute;
-  bottom: 55px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.affection-icon {
-  position: relative;
-  display: inline-block;
-  width: 93px;
-  height: 32px;
-  border: 1px solid #8b8585;
-  border-radius: 16px;
-  text-align: center;
-  text-indent: 21px;
-  line-height: 32px;
-  font-size: 14px;
-  cursor: pointer;
-}
-
-.affection-icon.selected {
-  background: #d8d8d8;
-}
-
-.affection-icon:before {
-  position: absolute;
-  background-size: 32px 32px;
-  display: inline-block;
-  top: 0;
-  left: 0;
-  width: 32px;
-  height: 32px;
-  content: "";
-}
-
-#neutral:before {
-  background-image: url('./svg/neutral.svg');
-}
-
-#sadness:before {
-  background-image: url('./svg/sadness.svg');
-}
-
-#happy:before {
-  background-image: url('./svg/happy.svg');
-}
-
-#disgust:before {
-  background-image: url('./svg/disgust.svg');
-}
-
-#anger:before {
-  background-image: url('./svg/anger.svg');
-}
-
-#fear:before {
-  background-image: url('./svg/fear.svg');
-}
-
-#certainty {
-  width: 300px;
-  height: 198px;
-}
-
-#certainty h1 {
-  margin: 24px 24px 21px;
-  font-size: 14px;
-  color: #393939;
-  font-weight: bold;
-}
-
-#certainty {
-  font-size: 12px;
-}
-
-#least-certain-text {
-  margin-left: 24px;
-  float: left;
-}
-
-#most-certain-text {
-  margin-right: 24px;
-  float: right;
-}
-
-#certainty-range {
-  width: 219px;
-  margin-top: 27.5px;
-  margin-left: 43px;
-}
-
-#certainty-range-text {
-  margin-top: 13.5px;
-  margin-left: 43px;
-  width: 219px;
-  text-align: justify;
-}
-
-#certainty-range-text:after {
-  content: "";
-  width: 100%;
-  display: inline-block;
+#submit {
+  margin-left: auto;
 }

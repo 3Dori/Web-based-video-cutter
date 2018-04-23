@@ -1,18 +1,27 @@
 $(function() {
 var video = $('#video-main')[0];
 var duration = video.duration;
-var initX = 0;
-var minX = $('#progress-bar-played')[0].getBoundingClientRect().right;
-var offsetLeft = $('#progress-drag').offset().left;
-var PROGRESS_BAR_WIDTH = 1046;
-var maxX = minX + PROGRESS_BAR_WIDTH;
-var PROGRESS_DRAG_OFFSET = 6;
+var PROGRESS_DRAG_OFFSET = 5;
+var minX = $('#progress-bar-played').offset().left + 8.5;
+var progress_bar_width = $('#tag-view').width() - 17;
+var maxX = minX + progress_bar_width;
+var offsetLeft = $('#progress-bar').offset().left + PROGRESS_DRAG_OFFSET;
 var MIN_POS_DIFF = 10;
 var paused = true;
 var nodes = [];
 var currentNode;
 var disabled = true;
 var textFile;
+
+$(window).resize(function() {
+  minX = $('#progress-bar-played').offset().left + 8.5;
+  progress_bar_width = $('#tag-view').width() - 17;
+  maxX = minX + progress_bar_width;
+  offsetLeft = $('#progress-bar').offset().left + PROGRESS_DRAG_OFFSET;
+  newPosition = video.currentTime / video.duration * progress_bar_width + PROGRESS_DRAG_OFFSET;
+  $('#progress-drag').css('left', newPosition + 'px');
+  $('#progress-bar-played').css('width', newPosition + PROGRESS_DRAG_OFFSET + 'px');
+});
 
 video.addEventListener('loadedmetadata', function() {
   duration = video.duration;
@@ -86,14 +95,12 @@ $('#certainty-range').change(function() {
 });
 
 $('#progress-drag').mousedown(function(e) {
-  initX = e.clientX;
   $('body').mouseup(function(e) {
     $('body').unbind('mouseup');
     $('body').unbind('mousemove');
   });
   $('body').mousemove(function(e) {
-    var offset = e.clientX - initX;
-    initX = e.clientX;
+    var initX = e.clientX;
     if (initX < minX || initX > maxX)
       return;
     var position = initX - offsetLeft;
@@ -152,7 +159,7 @@ function checkNode(position) {
 }
 
 function timeToPos(time) {
-  return time / duration * PROGRESS_BAR_WIDTH;
+  return time / duration * progress_bar_width;
 }
 
 function forcePause() {
@@ -164,7 +171,7 @@ function forcePause() {
 function setPosition(position) {
   $('#progress-drag').css('left', position + 'px');
   $('#progress-bar-played').css('width', position + PROGRESS_DRAG_OFFSET + 'px');
-  var currentTime = duration * position / PROGRESS_BAR_WIDTH;
+  var currentTime = duration * position / progress_bar_width;
   video.currentTime = currentTime;
 }
 

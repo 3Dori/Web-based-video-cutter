@@ -1,0 +1,368 @@
+html {
+  font-family: Helvetica, Arial;
+}
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+#main {
+  position: relative;
+  height: 100%;
+}
+
+.left {
+  position: absolute;
+  left: 0;
+  width: 187px;
+  height: 100%;
+}
+
+.right {
+  position: absolute;
+  height: 100%;
+  left: 187px;
+  right: 0;
+  border-left: 1px solid #dcdcdc;
+}
+
+#tool-plate {
+  margin-left: 10px;
+  margin-top: 38px;
+}
+
+#tool-plate .row {
+  margin-bottom: 34px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#tool-plate select {
+  margin-left: 20px;
+  width: 75px;
+}
+
+#submit-btn {
+  position: absolute;
+  top: 700px;
+  left: 13px;
+  width: 150px;
+  height: 38px;
+  border: 1px solid #8b8585;
+  border-radius: 19px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+#video-control {
+  position: relative;
+  margin-top: -4px;
+  width: 1253px;
+  height: 108px;
+  border-top: 1px solid white;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+#pause-btn, #sound-btn {
+  position: absolute;
+  top: 47px;
+  width: 26px;
+  height: 26px;
+  background-color: #707070;
+}
+
+#pause-btn {
+  left: 52px;
+  -webkit-mask: url('./svg/pause.svg') 0 0/26px 26px;
+  mask: url('./svg/pause.svg') 0 0/26px 26px;
+}
+
+#pause-btn.paused {
+  left: 52px;
+  -webkit-mask: url('./svg/play.svg') 0 0/26px 26px;
+  mask: url('./svg/play.svg') 0 0/26px 26px;
+}
+
+#sound-btn {
+  right: 52px;
+  -webkit-mask: url('./svg/sound.svg') 0 0/26px 26px;
+  mask: url('./svg/sound.svg') 0 0/26px 26px;
+}
+
+#progress-bar {
+  position: relative;
+  margin: 50px auto;
+  width: 1064px;
+  height: 17px;
+  border: 1px solid #a9a9a9;
+  border-radius: 9px;
+}
+
+#progress-bar-played {
+  width: 9px;
+  height: 17px;
+  border-top-left-radius: 9px;
+  border-bottom-left-radius: 9px;
+  background: #d8d8d8;
+  z-index: 1;
+}
+
+#tag-list {
+  position: relative;
+}
+
+.tag {
+  position: absolute;
+  top: -55px;
+  background-size: 22px 65px;
+  width: 22px;
+  height: 65px;
+  z-index: 2;
+}
+
+.tag-neutral {
+  background-image: url('./svg/neutrallabel.svg');
+}
+
+.tag-sadness {
+  background-image: url('./svg/sadnesslabel.svg');
+}
+
+.tag-happy {
+  background-image: url('./svg/happylabel.svg');
+}
+
+.tag-disgust {
+  background-image: url('./svg/disgustlabel.svg');
+}
+
+.tag-anger {
+  background-image: url('./svg/angerlabel.svg');
+}
+
+.tag-fear {
+  background-image: url('./svg/fearlabel.svg');
+}
+
+#progress-drag {
+  position: absolute;
+  top: 3px;
+  left: 6px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background: black;
+  z-index: 3;
+}
+
+#progress-drag:after {
+  position: absolute;
+  content: "";
+  top: -9px;
+  left: 4px;
+  width: 1px;
+  height: 28px;
+  background: black;
+}
+
+.disabled, .disabled .affection-icon {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#affection-marker {
+  height: calc(100% - 620px);
+  background: #ebebeb;
+  overflow: hidden;
+}
+
+#add-affection, #affection-type, #certainty {
+  box-shadow: 0 2px 10px -2px #929292;
+  float: left;
+  background: white;
+}
+
+#add-affection, #affection-type {
+  margin-right: 8px;
+}
+
+#add-affection {
+  position: relative;
+  width: 300px;
+  height: 198px;
+}
+
+#add-affection.remove #add-affection-btn {
+  display: none;
+}
+
+#add-affection.remove #remove-affection-btn {
+  display: block;
+}
+
+#add-affection-btn, #remove-affection-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 172px;
+  height: 38px;
+  border-radius: 19px;
+  border: 1px solid #8b8b85;
+  font-size: 14px;
+  text-align: center;
+  line-height: 38px;
+  cursor: pointer;
+}
+
+#remove-affection-btn {
+  display: none;
+}
+
+#add-affection-btn {
+  color: white;
+  background: black;
+}
+
+#affection-type {
+  width: 636px;
+  height: 198px;
+  overflow: hidden;
+}
+
+#affection-type-text {
+  float: left;
+  width: 198px;
+  height: 198px;
+  text-align: center;
+  line-height: 198px;
+  font-size: 14px;
+  font-weight: bold;
+  box-shadow: 0 0 2px #929292;
+}
+
+#affection-icons {
+  position: relative;
+  float: left;
+  width: 438px;
+  height: 198px;
+}
+
+.affection-icon-row {
+  width: 294px;
+}
+
+.affection-icon-row:first-child {
+  position: absolute;
+  top: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.affection-icon-row:last-child {
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.affection-icon {
+  position: relative;
+  display: inline-block;
+  width: 93px;
+  height: 32px;
+  border: 1px solid #8b8585;
+  border-radius: 16px;
+  text-align: center;
+  text-indent: 21px;
+  line-height: 32px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.affection-icon.selected {
+  background: #d8d8d8;
+}
+
+.affection-icon:before {
+  position: absolute;
+  background-size: 32px 32px;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  content: "";
+}
+
+#neutral:before {
+  background-image: url('./svg/neutral.svg');
+}
+
+#sadness:before {
+  background-image: url('./svg/sadness.svg');
+}
+
+#happy:before {
+  background-image: url('./svg/happy.svg');
+}
+
+#disgust:before {
+  background-image: url('./svg/disgust.svg');
+}
+
+#anger:before {
+  background-image: url('./svg/anger.svg');
+}
+
+#fear:before {
+  background-image: url('./svg/fear.svg');
+}
+
+#certainty {
+  width: 300px;
+  height: 198px;
+}
+
+#certainty h1 {
+  margin: 24px 24px 21px;
+  font-size: 14px;
+  color: #393939;
+  font-weight: bold;
+}
+
+#certainty {
+  font-size: 12px;
+}
+
+#least-certain-text {
+  margin-left: 24px;
+  float: left;
+}
+
+#most-certain-text {
+  margin-right: 24px;
+  float: right;
+}
+
+#certainty-range {
+  width: 219px;
+  margin-top: 27.5px;
+  margin-left: 43px;
+}
+
+#certainty-range-text {
+  margin-top: 13.5px;
+  margin-left: 43px;
+  width: 219px;
+  text-align: justify;
+}
+
+#certainty-range-text:after {
+  content: "";
+  width: 100%;
+  display: inline-block;
+}

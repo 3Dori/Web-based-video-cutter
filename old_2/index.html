@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>狼人杀标注</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+<div id="main">
+	<div class="left">
+		<div id="tool-plate">
+			<div class="row">
+				<label for="gameid">玩家场次：</label>
+				<select id="gameid">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="identity">玩家身份：</label>
+				<select id="identity">
+					<option>平民</option>
+					<option>狼人</option>
+					<option>预言家</option>
+					<option>女巫</option>
+					<option>猎人</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="playerid">玩家编号：</label>
+				<select id="playerid">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+				</select>
+			</div>
+			<div class="row">
+				<label for="gender">玩家性别：</label>
+				<select id="gender">
+					<option>男</option>
+					<option>女</option>
+				</select>
+			</div>
+		</div>
+		<div id="submit-btn">提交</div>
+	</div>
+	<div class="right">
+		<video width="1253" height="510" id="video-main">
+			<source src="./sample.mp4" type="video/mp4"/>
+		</video>
+		<div id="video-control">
+			<div id="pause-btn" class="paused"></div>
+			<div id="progress-bar">
+				<div id="progress-bar-played"></div>
+				<div id="progress-drag"></div>
+				<div id="tag-list"></div>
+			</div>
+			<div id="sound-btn"></div>
+		</div>
+		<div id="affection-marker">
+			<div id="add-affection">
+				<div id="add-affection-btn">+ 添加情感</div>
+				<div id="remove-affection-btn">- 删除情感</div>
+			</div>
+			<div id="affection-type" class="disabled">
+				<div id="affection-type-text">情感类型：</div>
+				<div id="affection-icons">
+					<div class="affection-icon-row">
+						<div id="neutral" class="affection-icon selected">中 性</div>
+						<div id="sadness" class="affection-icon">悲 伤</div>
+						<div id="happy" class="affection-icon">开 心</div>
+					</div>
+					<div class="affection-icon-row">
+						<div id="disgust" class="affection-icon">厌 恶</div>
+						<div id="anger" class="affection-icon">愤 怒</div>
+						<div id="fear" class="affection-icon">害 怕</div>
+					</div>
+				</div>
+			</div>
+			<div id="certainty" class="disabled">
+				<h1>确信度</h1>
+				<div id="least-certain-text">最不确定</div>
+				<div id="most-certain-text">最确定</div>
+				<input id="certainty-range" disabled type="range" min="1" max="5" />
+				<div id="certainty-range-text">
+					<span>1</span>
+					<span>2</span>
+					<span>3</span>
+					<span>4</span>
+					<span>5</span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+</script>
+</body>
+</html>
