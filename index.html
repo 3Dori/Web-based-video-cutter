@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>狼人杀标注</title>
+	<title>Werewolf Annotation System</title>
 	<link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
@@ -13,9 +13,9 @@
 	<div id="left-bar"></div>
 	<div id="video-wrap">
 		<video id="video-main">
-			<source src="./sample.mp4" type="video/mp4"/>
+			<source src="./sample.mov" type="video/mp4"/>
 		</video>
-		<div id="pause-btn"></div>
+		<div id="pause-btn" class="paused"></div>
 	</div>
 	<div id="right">
 		<div id="tool-plate-title">
@@ -62,7 +62,7 @@
 		<div id="affection-type" class="disabled">
 			<div id="affection-type-title" class="h1">情感类型：</div>
 			<div id="affection-icons">
-				<div id="neutral" class="affection-icon selected">中性</div>
+				<div id="neutral" class="affection-icon">中性</div>
 				<div id="sadness" class="affection-icon">悲伤</div>
 				<div id="happy" class="affection-icon">开心</div>
 				<div id="disgust" class="affection-icon">厌恶</div>
@@ -91,7 +91,9 @@
 		<div id="tag-view">
 			<div id="progress-bar">
 				<div id="progress-bar-played"></div>
-				<div id="progress-drag"></div>
+				<div id="progress-drag">
+					<div id="current-time">00:00:00</div>
+				</div>
 				<div id="tag-list"></div>
 			</div>
 		</div>

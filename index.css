@@ -46,7 +46,7 @@ header {
 #pause-btn {
   position: absolute;
   left: 30px;
-  bottom: 110px;
+  bottom: 30px;
   width: 75px;
   height: 75px;
   background-color: #fff;
@@ -55,16 +55,6 @@ header {
 #pause-btn:after {
   position: absolute;
   content: '';
-  top: 30px;
-  left: 32px;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 8px 0 8px 13.856px;
-  border-color: transparent transparent transparent #70cfe2;
-}
-
-#pause-btn.paused:after {
   top: 29px;
   left: 31.5px;
   width: 12px;
@@ -73,10 +63,22 @@ header {
   background: linear-gradient(to right, #70cfe2 0, #70cfe2 2px, #fff 2px, #fff 10px, #70cfe2 10px, #70cfe2 12px);
 }
 
+#pause-btn.paused:after {
+  top: 30px;
+  left: 32px;
+  width: 0;
+  height: 0;
+  background: #fff;
+  border-style: solid;
+  border-width: 8px 0 8px 13.856px;
+  border-color: transparent transparent transparent #70cfe2;
+}
+
 video {
   position: absolute;
-  left: calc(28.125vh - 16.59375px - 88.8888889%);
-  width: 177.7777778%;
+  /*left: calc(28.125vh - 16.59375px - 88.8888889%);*/
+  /*width: 177.7777778%;*/
+  width: 100%;
   height: auto;
 }
 
@@ -115,6 +117,7 @@ video {
   flex: 85;
   align-items: center;
   padding-right: 73px;
+  font-size: 14px;
   background: #f0f0f0;
 }
 #tool-plate > div {
@@ -123,7 +126,7 @@ video {
 #tool-plate select {
   margin-left: 9px;
   width: 91px;
-  font-size: 20px;
+  font-size: 14px;
 }
 
 #tag-editor-title {
@@ -151,6 +154,10 @@ video {
   display: flex;
   /*height: 171px;*/
   flex: 171;
+}
+
+#affection-type.disabled, #certainty.disabled {
+  opacity: 0.5;
 }
 
 #affection-type-title {
@@ -185,8 +192,25 @@ video {
 }
 
 .affection-icon.selected {
-  background: #000;
   color: #fff;
+}
+#neutral.selected {
+  background: #000;
+}
+#sadness.selected {
+  background: #3a67fb;
+}
+#happy.selected {
+  background: #65bc2f;
+}
+#disgust.selected {
+  background: #9221e5;
+}
+#anger.selected {
+  background: #fb432f;
+}
+#fear.selected {
+  background: #9e9e9e;
 }
 
 .affection-icon:before {
@@ -319,7 +343,7 @@ video {
 
 .tag {
   position: absolute;
-  top: -63px;
+  top: -64px;
   background-size: 22px 65px;
   width: 22px;
   height: 65px;
@@ -344,17 +368,35 @@ video {
   background-image: url('./svg/fearlabel.svg');
 }
 
+.certainty-tag {
+  position: absolute;
+  top: -63px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 17px;
+  height: 59px;
+  background: #d8d8d8;
+  padding: 3.5px;
+  box-sizing: border-box;
+  font-size: 9px;
+  color: #676767;
+  line-height: 12px;
+  text-align: center;
+}
+.certainty-tag.disabled {
+  display: none;
+}
+
 #progress-drag {
   position: absolute;
   top: 1.75px;
-  left: 3px;
+  left: 5px;
   width: 10px;
   height: 10px;
   border-radius: 5px;
   background: black;
   z-index: 3;
 }
-
 #progress-drag:after {
   position: absolute;
   content: "";
@@ -365,6 +407,14 @@ video {
   background: black;
 }
 
+#current-time {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  font-weight: bold;
+}
 #btn-group {
   display: flex;
   flex: 189;
@@ -385,9 +435,13 @@ video {
 
 #add-affection {
   display: block;
+  background: #70cfe2;
+  color: #fff;
 }
 #remove-affection {
   display: none;
+  background: #fff;
+  color: #70cfe2;
 }
 #add-remove-affection.remove #add-affection {
   display: none;
@@ -396,8 +450,6 @@ video {
   display: block;
 }
 #add-affection, #remove-affection {
-  background: #fff;
-  color: #70cfe2;
   border: 1px solid #70cfe2;
 }
 #prev-affection, #next-affection, #submit {

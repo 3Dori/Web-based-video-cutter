@@ -1,13 +1,14 @@
 $(function() {
 var video = $('#video-main')[0];
 var duration = video.duration;
-var PROGRESS_DRAG_OFFSET = 5;
+var VIDEO_TIME_CHANGE_STEP = 5;
+var PROGRESS_DRAG_OFFSET = 7;
 var minX = $('#progress-bar-played').offset().left + 8.5;
 var progressBarWidth = $('#tag-view').width() - 17;
 var maxX = minX + progressBarWidth;
 var offsetLeft = $('#progress-bar').offset().left + PROGRESS_DRAG_OFFSET;
 var submitProgressBarWidth = 813;
-var MIN_POS_DIFF = 10;
+var MIN_POS_DIFF = 1;
 var paused = true;
 var nodes = [];
 var currentNode;
@@ -20,8 +21,7 @@ $(window).resize(function() {
   maxX = minX + progressBarWidth;
   offsetLeft = $('#progress-bar').offset().left + PROGRESS_DRAG_OFFSET;
   newPosition = video.currentTime / video.duration * progressBarWidth;
-  $('#progress-drag').css('left', newPosition + PROGRESS_DRAG_OFFSET + 'px');
-  $('#progress-bar-played').css('width', newPosition + PROGRESS_DRAG_OFFSET * 2 + 'px');
+  setPosition(newPosition);
   for (var i = 0, len = nodes.length; i < len; i++) {
     var node = nodes[i];
     node.element.css('left', timeToPos(node.time) - PROGRESS_DRAG_OFFSET + 'px');
@@ -41,6 +41,16 @@ $('#submit').click(function() {
     var node = nodes[i];
     var pos = node.time / video.duration * submitProgressBarWidth - PROGRESS_DRAG_OFFSET;
     var newTag = $('<div class="tag"></div>');
+    (function() {
+      var certaintyTag = $('<div class="certainty-tag disabled">确<br/>信<br/>度<br/><span class="certainty-value"></span></div>');
+      certaintyTag.appendTo(newTag);
+      certaintyTag.find('.certainty-value').text(node.certainty);
+      newTag.hover(function() {
+        certaintyTag.removeClass('disabled');
+      }, function() {
+        certaintyTag.addClass('disabled');
+      });
+    })();
     newTag.appendTo('#confirm-tags-tag-list');
     newTag.addClass('tag-' + node.affection);
     newTag.css('left', pos);
@@ -71,7 +81,7 @@ $('#confirm-submit').click(function() {
   var text = 'time,affection,certainty\n';
   var sortedNodes = nodes.sort(function(a, b) { return a.time - b.time });
   for (var i = 0, len = sortedNodes.length; i < len; i++) {
-    text += toHHMMSSsss(sortedNodes[i].time) + ',' + sortedNodes[i].affection + ',' + sortedNodes[i].certainty + '\n';
+    text += toHHMMSS(sortedNodes[i].time, true) + ',' + sortedNodes[i].affection + ',' + sortedNodes[i].certainty + '\n';
   }
   var blob = new Blob([text], { type: 'text/plain' });
   if (textFile !== null)
@@ -84,24 +94,33 @@ $('#confirm-submit').click(function() {
 });
 
 $('#add-affection').click(function() {
-  if (!paused)
-    return;
   disableAdd();
+  forcePause();
   resetAffectionAndCertainty();
   var newTag = $('<div class="tag"></div>');
   newTag.appendTo('#tag-list');
-  var selectedAffection = $('.affection-icon.selected').attr('id');
+  var selectedAffection = $('.affection-icon.selected').attr('id') || 'unselected';
   var time = video.currentTime;
+  var certainty = $('#certainty-range').val();
   newTag.addClass('tag-' + selectedAffection);
   newTag.css('left', timeToPos(time) - PROGRESS_DRAG_OFFSET);
-  newTag.click(function() {
+  newTag.click(function(e) {
+    e.stopPropagation();
     setPosition(timeToPos(time));
     forcePause();
-  })
+  });
+  var certaintyTag = $('<div class="certainty-tag disabled">确<br/>信<br/>度<br/><span class="certainty-value"></span></div>');
+  certaintyTag.appendTo(newTag);
+  certaintyTag.find('.certainty-value').text(certainty);
+  newTag.hover(function() {
+    certaintyTag.removeClass('disabled');
+  }, function() {
+    certaintyTag.addClass('disabled');
+  });
   currentNode = {
     time: time,
     affection: selectedAffection,
-    certainty: $('#certainty-range').val(),
+    certainty: certainty,
     element: newTag
   };
   nodes.push(currentNode);
@@ -190,7 +209,9 @@ $('.affection-icon').click(function() {
 });
 
 $('#certainty-range').change(function() {
-  currentNode.certainty = $(this).val();
+  var certainty = $(this).val()
+  currentNode.certainty = certainty;
+  currentNode.element.find('.certainty-value').text(certainty);
 });
 
 $('#progress-drag').mousedown(function(e) {
@@ -199,26 +220,30 @@ $('#progress-drag').mousedown(function(e) {
     $('body').unbind('mousemove');
   });
   $('body').mousemove(function(e) {
-    var initX = e.clientX;
-    if (initX < minX || initX > maxX)
-      return;
-    var position = initX - offsetLeft;
-    setPosition(position);
-    checkNode(position);
+    changeProgressByMousePos(e.clientX);
   })
 });
+
+$('#progress-bar').click(function(e) {
+  changeProgressByMousePos(e.clientX);
+})
 
 $('#pause-btn').click(pausePlay);
 $(document).keyup(function(e) {
   var key = e.keyCode;
   if (key == 32)
     pausePlay();
+  if (key == 39)
+    playNextSecs();
+  if (key == 37)
+    playPrevSecs();
 });
 
 video.addEventListener('timeupdate', function() {
   var position = timeToPos(video.currentTime);
   $('#progress-drag').css('left', position + 'px');
-  $('#progress-bar-played').css('width', position + PROGRESS_DRAG_OFFSET + 'px');
+  $('#progress-bar-played').css('width', position + PROGRESS_DRAG_OFFSET - 2 + 'px');
+  $('#current-time').text(toHHMMSS(video.currentTime));
   checkNode(position);
 });
 
@@ -251,7 +276,15 @@ function resetAffectionAndCertainty() {
 function sortNodes() {
   nodes.sort(function(n1, n2) {
     return n1.time - n2.time;
-  })
+  });
+}
+
+function changeProgressByMousePos(pos) {
+  if (pos < minX || pos > maxX)
+    return;
+  var position = pos - offsetLeft;
+  setPosition(position);
+  // checkNode(position);
 }
 
 function checkNode(position) {
@@ -267,6 +300,7 @@ function checkNode(position) {
       return;
     }
   }
+  $('.affection-icon').removeClass('selected');
   currentNode = null;
   enableAdd();
 }
@@ -283,7 +317,7 @@ function forcePause() {
 
 function setPosition(position) {
   $('#progress-drag').css('left', position + 'px');
-  $('#progress-bar-played').css('width', position + PROGRESS_DRAG_OFFSET + 'px');
+  $('#progress-bar-played').css('width', position + PROGRESS_DRAG_OFFSET - 2 + 'px');
   var currentTime = duration * position / progressBarWidth;
   video.currentTime = currentTime;
 }
@@ -301,7 +335,15 @@ function pausePlay() {
   }
 }
 
-function toHHMMSSsss(sec) {
+function playPrevSecs() {
+  video.currentTime = Math.max(0, video.currentTime - VIDEO_TIME_CHANGE_STEP);
+}
+
+function playNextSecs() {
+  video.currentTime = Math.min(video.currentTime + VIDEO_TIME_CHANGE_STEP, duration);
+}
+
+function toHHMMSS(sec, milli) {
     var totalSec = parseInt(sec, 10);
     var hours = Math.floor(totalSec / 3600);
     var minutes = Math.floor((totalSec - (hours * 3600)) / 60);
@@ -310,7 +352,10 @@ function toHHMMSSsss(sec) {
     if (hours < 10) hours = "0" + hours;
     if (minutes < 10) minutes = "0" + minutes;
     seconds += sec - totalSec;
-    seconds = seconds.toFixed(1);
+    if (milli)
+      seconds = seconds.toFixed(1);
+    else
+      seconds = parseInt(seconds, 10);
     if (seconds < 10) seconds = "0" + seconds;
     return hours + ':' + minutes + ':' + seconds;
 }

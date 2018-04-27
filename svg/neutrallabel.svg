@@ -1,26 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="22px" height="64px" viewBox="0 0 22 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 49.1 (51147) - http://www.bohemiancoding.com/sketch -->
+<svg width="16px" height="51px" viewBox="0 0 16 51" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
     <title>Group 4</title>
     <desc>Created with Sketch.</desc>
-    <defs>
-        <filter x="-5.0%" y="-3.2%" width="120.0%" height="108.1%" filterUnits="objectBoundingBox" id="filter-1">
-            <feOffset dx="1" dy="0" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
-            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
-            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
-            <feMerge>
-                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
-                <feMergeNode in="SourceGraphic"></feMergeNode>
-            </feMerge>
-        </filter>
-    </defs>
+    <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Group-13" transform="translate(-24.000000, 0.000000)">
-            <g id="Group-4" filter="url(#filter-1)" transform="translate(24.000000, 1.000000)">
-                <polyline id="Line" stroke="#000000" stroke-linecap="square" points="10 25.2190339 10 62 10 20"></polyline>
-                <g id="emoji_line-(57)" fill="#000000" fill-rule="nonzero">
-                    <path d="M10,20 C4.4771525,20 6.76353751e-16,15.5228475 0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 C15.5228475,-1.01453063e-15 20,4.4771525 20,10 C20,12.6521649 18.9464316,15.195704 17.0710678,17.0710678 C15.195704,18.9464316 12.6521649,20 10,20 Z M10,1.02567742 C5.0436185,1.02567742 1.02567742,5.0436185 1.02567742,10 C1.02567742,14.9563815 5.0436185,18.9743226 10,18.9743226 C14.9563815,18.9743226 18.9743226,14.9563815 18.9743226,10 C18.9743226,7.61986167 18.0288163,5.3372076 16.3458044,3.65419565 C14.6627924,1.97118369 12.3801383,1.02567742 10,1.02567742 Z M13.5483871,7.22580645 L15.7419355,7.22580645 L15.7419355,9.16129033 L13.5483871,9.16129033 L13.5483871,7.22580645 Z M6.77419355,11.7419355 L13.2258064,11.7419355 L13.2258064,12.3870968 L6.77419355,12.3870968 L6.77419355,11.7419355 Z M4.25806451,7.22580645 L6.45161291,7.22580645 L6.45161291,9.16129033 L4.25806451,9.16129033 L4.25806451,7.22580645 Z" id="Shape"></path>
-                </g>
+        <g id="Group-4">
+            <polyline id="Line" stroke="#000000" stroke-linecap="square" points="8 20.7446892 8 51 8 16.4516129"></polyline>
+            <g id="emoji_line-(57)" fill="#000000" fill-rule="nonzero">
+                <path d="M8,16.4516129 C3.581722,16.4516129 5.41083001e-16,12.7687939 0,8.22580645 C-5.41083001e-16,3.68281899 3.581722,8.34533257e-16 8,0 C12.418278,-8.34533257e-16 16,3.68281899 16,8.22580645 C16,10.407426 15.1571453,12.499692 13.6568542,14.04233 C12.1565632,15.5849679 10.1217319,16.4516129 8,16.4516129 Z M8,0.843702395 C4.0348948,0.843702395 0.820541938,4.14878296 0.820541938,8.22580645 C0.820541938,12.3028299 4.0348948,15.6079105 8,15.6079105 C11.9651052,15.6079105 15.1794581,12.3028299 15.1794581,8.22580645 C15.1794581,6.26795073 14.423053,4.39028367 13.0766435,3.00587061 C11.7302339,1.62145755 9.90411067,0.843702395 8,0.843702395 Z M10.8387097,5.94380853 L12.5935484,5.94380853 L12.5935484,7.53590011 L10.8387097,7.53590011 L10.8387097,5.94380853 Z M5.41935484,9.65868887 L10.5806452,9.65868887 L10.5806452,10.1893861 L5.41935484,10.1893861 L5.41935484,9.65868887 Z M3.40645161,5.94380853 L5.16129033,5.94380853 L5.16129033,7.53590011 L3.40645161,7.53590011 L3.40645161,5.94380853 Z" id="Shape"></path>
             </g>
         </g>
     </g>
