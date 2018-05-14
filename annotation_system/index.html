@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Werewolf Annotation System</title>
+	<link rel="stylesheet" type="text/css" href="./index.css">
+</head>
+<body>
+<header>
+	<div id="title"><span id="werewolf">Werewolf</span> Annotation System</div>
+</header>
+<div id="row">
+	<div id="left-bar"></div>
+	<div id="video-wrap">
+		<video id="video-main">
+			<source src="./sample.mov" type="video/mp4"/>
+		</video>
+		<div id="pause-btn" class="paused"></div>
+	</div>
+	<div id="right">
+		<div id="tool-plate-title">
+			玩家信息（必填）：
+		</div>
+		<div id="tool-plate">
+			<div>
+				<label for="gameid">玩家场次</label>
+				<select id="gameid">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+					<option>05</option>
+					<option>06</option>
+					<option>07</option>
+					<option>08</option>
+					<option>09</option>
+					<option>10</option>
+					<option>11</option>
+					<option>12</option>
+					<option>13</option>
+					<option>14</option>
+					<option>15</option>
+					<option>16</option>
+					<option>17</option>
+					<option>18</option>
+					<option>19</option>
+					<option>20</option>
+					<option>21</option>
+					<option>22</option>
+					<option>23</option>
+					<option>24</option>
+					<option>25</option>
+					<option>26</option>
+					<option>27</option>
+					<option>28</option>
+					<option>29</option>
+					<option>30</option>
+				</select>
+			</div>
+			<div>
+				<label for="playerid">玩家编号</label>
+				<select id="playerid">
+					<option>01</option>
+					<option>02</option>
+					<option>03</option>
+					<option>04</option>
+					<option>05</option>
+					<option>06</option>
+					<option>07</option>
+					<option>08</option>
+					<option>09</option>
+				</select>
+			</div>
+			<div>
+				<label for="gender">玩家性别</label>
+				<select id="gender">
+					<option value="male">男</option>
+					<option value="female">女</option>
+				</select>
+			</div>
+			<div>
+				<label for="identity">玩家身份</label>
+				<select id="identity">
+					<option value="villager">平民</option>
+					<option value="werewolf">狼人</option>
+					<option value="seer">预言家</option>
+					<option value="witch">女巫</option>
+					<option value="hunter">猎人</option>
+				</select>
+			</div>
+		</div>
+		<div id="tag-editor-title">
+			标签编辑面板：
+		</div>
+		<div id="affection-type" class="disabled">
+			<div id="affection-type-title" class="h1">情感类型：</div>
+			<div id="affection-icons">
+				<div id="neutral" class="affection-icon">中性</div>
+				<div id="sadness" class="affection-icon">悲伤</div>
+				<div id="happy" class="affection-icon">开心</div>
+				<div id="disgust" class="affection-icon">厌恶</div>
+				<div id="anger" class="affection-icon">愤怒</div>
+				<div id="fear" class="affection-icon">害怕</div>
+			</div>
+		</div>
+		<div id="certainty" class="disabled">
+			<div id="certainty-title" class="h1">确信度：</div>
+			<div id="certainty-bar">
+				<div id="least-certain-text">最不确定</div>
+				<div id="most-certain-text">最确定</div>
+				<input id="certainty-range" type="range" min="1" max="5" disabled />
+				<div id="certainty-range-text">
+					<div>1</div>
+					<div>2</div>
+					<div>3</div>
+					<div>4</div>
+					<div>5</div>
+				</div>
+			</div>
+		</div>
+		<div id="tag-view-title" class="h1">
+			标签视图：
+		</div>
+		<div id="tag-view">
+			<div id="progress-bar">
+				<div id="progress-bar-played"></div>
+				<div id="progress-drag">
+					<div id="current-time">00:00:00</div>
+				</div>
+				<div id="tag-list"></div>
+			</div>
+		</div>
+
+		<div id="btn-group">
+			<div id="add-remove-affection">
+				<div id="add-affection" class="btn">+ 添加情感</div>
+				<div id="remove-affection" class="btn">- 删除情感</div>
+			</div>
+			<div id="prev-affection" class="btn">&lt; 上一标签</div>
+			<div id="next-affection" class="btn">&gt; 下一标签</div>
+			<div id="submit" class="btn">提交</div>
+		</div>
+	</div>
+</div>
+<div id="confirm-tags" class="dialog">
+	<div class="confirm-header"></div>
+	<div class="confirm-title">请确认标签信息</div>
+	<div id="confirm-tags-tags">
+		<div id="confirm-tags-progress-bar"></div>
+		<div id="confirm-tags-tag-list"></div>
+	</div>
+	<div class="confirm-btn-group">
+		<div id="back-to-edit" class="btn">返回修改</div>
+		<div id="next-step" class="btn">下一步</div>
+	</div>
+</div>
+<div id="confirm-info" class="dialog">
+	<div class="confirm-header"></div>
+	<div class="confirm-title">请确认标签信息</div>
+	<div id="confirm-info-plate">
+		<div>
+			<label for="confirm-gameid">场次：</label>
+			<select id="confirm-gameid">
+				<option>01</option>
+				<option>02</option>
+				<option>03</option>
+				<option>04</option>
+				<option>05</option>
+				<option>06</option>
+				<option>07</option>
+				<option>08</option>
+				<option>09</option>
+				<option>10</option>
+				<option>11</option>
+				<option>12</option>
+				<option>13</option>
+				<option>14</option>
+				<option>15</option>
+				<option>16</option>
+				<option>17</option>
+				<option>18</option>
+				<option>19</option>
+				<option>20</option>
+				<option>21</option>
+				<option>22</option>
+				<option>23</option>
+				<option>24</option>
+				<option>25</option>
+				<option>26</option>
+				<option>27</option>
+				<option>28</option>
+				<option>29</option>
+				<option>30</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-playerid">编号：</label>
+			<select id="confirm-playerid">
+				<option>01</option>
+				<option>02</option>
+				<option>03</option>
+				<option>04</option>
+				<option>05</option>
+				<option>06</option>
+				<option>07</option>
+				<option>08</option>
+				<option>09</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-gender">性别：</label>
+			<select id="confirm-gender">
+				<option value="male">男</option>
+				<option value="female">女</option>
+			</select>
+		</div>
+		<div>
+			<label for="confirm-identity">身份：</label>
+			<select id="confirm-identity">
+				<option value="villager">平民</option>
+				<option value="werewolf">狼人</option>
+				<option value="seer">预言家</option>
+				<option value="witch">女巫</option>
+				<option value="hunter">猎人</option>
+			</select>
+		</div>
+	</div>
+	<div class="confirm-btn-group">
+		<div id="prev-step" class="btn">上一步</div>
+		<div id="confirm-submit" class="btn">确认提交</div>
+	</div>
+</div>
+<script type="text/javascript" src="./jquery/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="./index.js"></script>
+</body>
+</html>
